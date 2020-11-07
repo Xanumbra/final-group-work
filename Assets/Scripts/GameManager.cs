@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static int CARD_COUNT = 8;
+    public static int CARD_COUNT = 8; // Change this according to # of cards in the level.
     public Sprite[] cardFace;
     public Sprite cardBack;
     public GameObject[] cards;
@@ -39,13 +39,26 @@ public class GameManager : MonoBehaviour
         choices = new int[CARD_COUNT];
         for(int i = 0; i < CARD_COUNT; i++)
         {
-            choices[i] = i;
+            choices[i] = i; // 0 1 2 3 4 5 6 7 ...
         }
         shuffleArr(choices);
 
 
         for(int i = 0; i < CARD_COUNT; i++)
         {
+            // 0 1 2 3 4 5 6 7 
+            // 4 5 7 2 1 3 0 6
+
+            // 4 % 4 -> 0
+            // 5 % 4 -> 1
+            // 7 % 4 -> 3
+            // 2 % 4 -> 2
+
+            // 1 % 4 -> 1
+            // 3 % 4 -> 3
+            // 0 % 4 -> 0
+            // 6 % 4 -> 2
+
             int choice = choices[i];
             cards[choice].GetComponent<Card>().cardValue = i % (CARD_COUNT/2);
             cards[choice].GetComponent<Card>().initialized = true;
