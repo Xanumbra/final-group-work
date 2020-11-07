@@ -105,7 +105,9 @@ public class GameManager : MonoBehaviour
         {
             x = 2;
             score += 100;
-            if (score == 400)
+            // Add animation trigger here so that Animation happens when cards are matched.
+
+            if (score == 100 * (CARD_COUNT/2))
                 SceneManager.LoadScene("MainMenu");
         }
 
