@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
+    
     public static bool CAN_FLIP = true;
 
     [SerializeField]
@@ -25,7 +26,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        _state = 1;
+        _state = 0;
         _manager = GameObject.Find("GameManager");
     }
     public void setupGraphics()
@@ -33,13 +34,12 @@ public class Card : MonoBehaviour
         _cardBack = _manager.GetComponent<GameManager>().getCardBack();
         _cardFace = _manager.GetComponent<GameManager>().getCardFace(_cardValue);
 
-        flipCard();
     }
     public void flipCard()
     {
-        if (_state == 1)
+        if (_state == 1 && CAN_FLIP)
             _state = 0;
-        else if (_state == 0)
+        else if (_state == 0 && CAN_FLIP)
             _state = 1;
 
         if (_state == 0 && CAN_FLIP)
