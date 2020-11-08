@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    public static bool CANT_FLIP = false;
+    public static bool CAN_FLIP = true;
 
     [SerializeField]
     private int _state;
+    // State 0 = Card Face down
+    // State 1 = Card Face up
+    // State 2 = Card Face up forever
     [SerializeField]
     private int _cardValue;
     [SerializeField]
@@ -39,11 +42,11 @@ public class Card : MonoBehaviour
         else if (_state == 0)
             _state = 1;
 
-        if (_state == 0 && !CANT_FLIP)
+        if (_state == 0 && CAN_FLIP)
         {
             GetComponent<Image>().sprite = _cardBack;
         }
-        else if (_state == 1 && !CANT_FLIP)
+        else if (_state == 1 && CAN_FLIP)
         {
             GetComponent<Image>().sprite = _cardFace;
         }
@@ -79,7 +82,7 @@ public class Card : MonoBehaviour
         {
             GetComponent<Image>().sprite = _cardFace;
         }
-        CANT_FLIP = false;
+        CAN_FLIP = true;
     }
 
 }

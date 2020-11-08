@@ -6,15 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static int CARD_COUNT = 8; // Change this according to # of cards in the level.
+     
     public Sprite[] cardFace;
     public Sprite cardBack;
     public GameObject[] cards;
     public Text matchText;
-    public int[] choices;
+    public int[] orders;
+    public static int CARD_COUNT;
 
     private bool _init = false;
+    [SerializeField]
     private int score = 0;
+
+    public void Start()
+    {
+        CARD_COUNT = cards.Length;
+    }
 
     private void Update()
     {
@@ -40,14 +47,13 @@ public class GameManager : MonoBehaviour
     }
     void initializeCards()
     {
-        choices = new int[CARD_COUNT];
+        orders = new int[CARD_COUNT];
         for(int i = 0; i < CARD_COUNT; i++)
         {
-            choices[i] = i; // 0 1 2 3 4 5 6 7 ...
+            orders[i] = i; // 0 1 2 3 4 5 6 7 ...
         }
 
-
-        shuffleArr(choices);
+        shuffleArr(orders);
 
         for(int i = 0; i < CARD_COUNT; i++)
         {
@@ -64,7 +70,7 @@ public class GameManager : MonoBehaviour
             // 0 % 4 -> 0
             // 6 % 4 -> 2
 
-            int choice = choices[i];
+            int choice = orders[i];
             cards[choice].GetComponent<Card>().cardValue = i % (CARD_COUNT/2);
             cards[choice].GetComponent<Card>().initialized = true;
         }
@@ -102,7 +108,7 @@ public class GameManager : MonoBehaviour
     }
     void cardComparison(List<int> c)
     {
-        Card.CANT_FLIP = true;
+        Card.CAN_FLIP = false;
 
         int x = 0;
 
