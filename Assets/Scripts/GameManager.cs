@@ -23,15 +23,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             checkCards();
     }
+    void swap(int[] arr, int a, int b)
+    {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
     void shuffleArr(int[] arr)
     {
-        int i,j,temp;
+        int i,j;
         for(i = arr.Length - 1; i >= 0; i--)
         {
             j = Random.Range(0, i);
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+            swap(arr, i, j);
         }
     }
     void initializeCards()
