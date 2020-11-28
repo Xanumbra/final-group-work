@@ -7,26 +7,27 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
      
-    public Sprite[] cardFace;
+    public Sprite[] cardFaces;
+    public Sprite[] cardFacesPairs;
     public Sprite cardBack;
-    public GameObject[] cards;
-    public Text matchText;
+    public List<GameObject> cards;
+    public int totalCardCount;
+    // public Text matchText;
     public int[] orders;
-    public static int CARD_COUNT;
 
-    private bool _init = false;
+    private Component _levelCreator;
+
     [SerializeField]
     private int score = 0;
 
     public void Start()
     {
-        CARD_COUNT = cards.Length;
+        DontDestroyOnLoad(this);
+        _levelCreator = this.GetComponent<LevelCreator>();
     }
 
     private void Update()
     {
-        if (!_init)
-            initializeCards();
         if (Input.GetMouseButtonUp(0))
             checkCards();
     }
@@ -45,61 +46,60 @@ public class GameManager : MonoBehaviour
             swap(arr, i, j);
         }
     }
-    void initializeCards()
+    int[] initializeOrderArray(int[] arr, int cardCount)
     {
-        orders = new int[CARD_COUNT];
-        for(int i = 0; i < CARD_COUNT; i++)
+        orders = new int[cardCount];
+        for (int i = 0; i < cardCount; i++)
         {
             orders[i] = i; // 0 1 2 3 4 5 6 7 ...
         }
-
+        return arr;
+    }
+    public void initializeCards(int cardCount)
+    {
+        totalCardCount = cardCount;
+        // create orders array for mixing cards
+        initializeOrderArray(orders, cardCount);
+        // Shuffle order array
         shuffleArr(orders);
-
-        for(int i = 0; i < CARD_COUNT; i++)
+        for(int i = 0; i < cardCount; i++)
         {
-            // 0 1 2 3 4 5 6 7 
-            // 4 5 7 2 1 3 0 6
-
-            // 4 % 4 -> 0
-            // 5 % 4 -> 1
-            // 7 % 4 -> 3
-            // 2 % 4 -> 2
-
-            // 1 % 4 -> 1
-            // 3 % 4 -> 3
-            // 0 % 4 -> 0
-            // 6 % 4 -> 2
-
             int choice = orders[i];
-            cards[choice].GetComponent<Card>().cardValue = i % (CARD_COUNT/2);
-            cards[choice].GetComponent<Card>().initialized = true;
+            cards[choice].GetComponent<Card>().CardValue = i % (cardCount/2);
+            cards[choice].GetComponent<Card>().Initialized = true;
         }
-
+        setupGraphics(cards);
+    }
+    public void setupGraphics(List<GameObject> cards)
+    {
         foreach (GameObject c in cards)
         {
-            c.GetComponent<Card>().setupGraphics();
+            c.GetComponent<Card>().CardBack = cardBack;
+            c.GetComponent<Card>().CardFace = getCardFace(c.GetComponent<Card>().CardValue);
         }
-        if (!_init)
-            _init = true;
     }
-
     public Sprite getCardBack()
     {
         return cardBack;
     }
     public Sprite getCardFace(int i)
     {
-        return cardFace[i];
+        return cardFaces[i];
+    }
+    public Sprite getCardFacePair(int i)
+    {
+        return cardFacesPairs[i];
     }
     void checkCards()
     {
         List<int> c = new List<int>();
-
-        for(int i = 0; i < cards.Length; i++)
+        int index = 0;
+        for(int i = 0; i < cards.Count; i++)
         {
-            if(cards[i].GetComponent<Card>().state == 1)
+            if(cards[i].GetComponent<Card>().State == 1)
             {
-                c.Add(i);
+                Debug.Log("Inserted " + i + " at index " + index);
+                c.Insert(index++, i);
             }
         }
 
@@ -111,22 +111,40 @@ public class GameManager : MonoBehaviour
         Card.CAN_FLIP = false;
 
         int x = 0;
-
-        if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
+        int tempCardValue;
+        
+        if(cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
+            // Debug.Log("Cards are matched! "+cards[c[0]].GetComponent<Card>().CardFace.name + " and " + cards[c[1]].GetComponent<Card>().CardFace.name);
             x = 2;
             score += 100;
+            tempCardValue = cards[c[0]].GetComponent<Card>().CardValue;
+            // Debug.Log("Removing cards at indexes " + c[0] + " and " + c[1]);
+            DestroyCard(c[0]);
+            DestroyCard(c[1] - 1);
             // Add animation trigger here so that Animation happens when cards are matched.
-
-            if (score == 100 * (CARD_COUNT/2))
-                SceneManager.LoadScene("MainMenu");
+            Debug.Log("Score: " + score);
+            if (score == 100 * (totalCardCount / 2))
+            {
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            }  
         }
-
-        for(int i = 0; i < c.Count; i++)
+        else
         {
-            cards[c[i]].GetComponent<Card>().state = x;
-            cards[c[i]].GetComponent<Card>().falseCheck();
+            
+            for (int i = 0; i < c.Count; i++)
+            {
+                cards[c[i]].GetComponent<Card>().State = x;
+                cards[c[i]].GetComponent<Card>().falseCheck();
+            }
         }
-
+        Card.CAN_FLIP = true;
+    }
+    void DestroyCard(int index)
+    {
+        GameObject toBeDestroyed;
+        toBeDestroyed = cards[index];
+        cards.Remove(cards[index]);
+        Destroy(toBeDestroyed, 1.0f);
     }
 }
