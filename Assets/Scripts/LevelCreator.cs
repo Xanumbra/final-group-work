@@ -4,17 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelCreator : MonoBehaviour
 {
+    public static LevelCreator instance = null;
     // Used for creating cards in the Scene
     public GameObject CardPrefab;
-
     private GameManager _gameManager;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
-        _gameManager = GetComponent<GameManager>();
-        initializeLevel();
+        _gameManager = GameManager.instance;
     }
-    void initializeLevel()
+    public void initializeLevel()
     {
         if (SceneManager.GetActiveScene().name.StartsWith("Level_"))
         {

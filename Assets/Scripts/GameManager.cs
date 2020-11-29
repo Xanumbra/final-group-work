@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-     
+    public static GameManager instance = null;
+
     public Sprite[] cardFaces;
     public Sprite[] cardFacesPairs;
     public Sprite cardBack;
@@ -15,15 +16,36 @@ public class GameManager : MonoBehaviour
     // public Text matchText;
     public int[] orders;
 
-    private Component _levelCreator;
 
     [SerializeField]
     private int score = 0;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public Sprite getCardBack()
+    {
+        return cardBack;
+    }
+    public Sprite getCardFace(int i)
+    {
+        return cardFaces[i];
+    }
+    public Sprite getCardFacePair(int i)
+    {
+        return cardFacesPairs[i];
+    }
+
     public void Start()
     {
         DontDestroyOnLoad(this);
-        _levelCreator = this.GetComponent<LevelCreator>();
     }
 
     private void Update()
@@ -78,18 +100,6 @@ public class GameManager : MonoBehaviour
             c.GetComponent<Card>().CardFace = getCardFace(c.GetComponent<Card>().CardValue);
         }
     }
-    public Sprite getCardBack()
-    {
-        return cardBack;
-    }
-    public Sprite getCardFace(int i)
-    {
-        return cardFaces[i];
-    }
-    public Sprite getCardFacePair(int i)
-    {
-        return cardFacesPairs[i];
-    }
     void checkCards()
     {
         List<int> c = new List<int>();
@@ -111,21 +121,15 @@ public class GameManager : MonoBehaviour
         Card.CAN_FLIP = false;
 
         int x = 0;
-        int tempCardValue;
         
         if(cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
-            // Debug.Log("Cards are matched! "+cards[c[0]].GetComponent<Card>().CardFace.name + " and " + cards[c[1]].GetComponent<Card>().CardFace.name);
-            x = 2;
             score += 100;
-            tempCardValue = cards[c[0]].GetComponent<Card>().CardValue;
-            // Debug.Log("Removing cards at indexes " + c[0] + " and " + c[1]);
             DestroyCard(c[0]);
             DestroyCard(c[1] - 1);
-            // Add animation trigger here so that Animation happens when cards are matched.
-            Debug.Log("Score: " + score);
             if (score == 100 * (totalCardCount / 2))
             {
+                score = 0;
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
             }  
         }

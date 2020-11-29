@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour
 {
     public static bool CAN_FLIP = true;
-    private GameObject _gameManager;
     public int CardValue { get; set; }
     public int State { get; set; }
     public bool Initialized { get; set; }
