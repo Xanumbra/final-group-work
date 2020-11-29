@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Singleton instance object
+    public static AnimationController instance = null;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void TriggerAnimation()
+    {
+
+    }
+    public void TriggerAnotherAnimation()
+    {
+
     }
 }
