@@ -32,6 +32,10 @@ public class SceneController : MonoBehaviour
     {
             _gameManager.GetComponent<LevelCreator>().initializeLevel();
     }
+    public void loadLevel(int levelIndex)
+    {
+        SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
+    }
     public void loadLevel_1()
     {
         // Debug.Log("Loading Level 1...");

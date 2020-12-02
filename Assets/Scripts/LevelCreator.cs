@@ -31,14 +31,14 @@ public class LevelCreator : MonoBehaviour
             int levelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 1));
             if(levelNumber == 1)
             {
-                createMatchLevel(8);
+                createEasyMatchLevel(8);
             } else if (levelNumber == 2)
             {
-                createMatchLevel(16);
+                createNormalMatchLevel(16);
             }
             else if (levelNumber == 3)
             {
-                createMatchLevel(26);
+                createHardMatchLevel(26);
             }
             else if (levelNumber == 4)
             {
@@ -66,7 +66,7 @@ public class LevelCreator : MonoBehaviour
             }
         }
     }
-    void createMatchLevel(int cardCount)
+    void createEasyMatchLevel(int cardCount)
     {
         GameObject clone;
         int index = 0;
@@ -86,6 +86,63 @@ public class LevelCreator : MonoBehaviour
         }
 
         _gameManager.initializeCards(cardCount);
+    }
+
+    void createNormalMatchLevel(int cardCount)
+    {
+        GameObject clone;
+        int index = 0;
+
+        for (int i = 0; i < 8; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(Screen.width / 8 + i * 200, 2 * Screen.height / 3, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        for (int i = 0; i < 8; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(Screen.width / 8 + i * 200, Screen.height / 3, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        // _gameManager.initializeCards(cardCount);
+    }
+    void createHardMatchLevel(int cardCount)
+    {
+        GameObject clone;
+        int index = 0;
+
+        for (int i = 0; i < 5; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(43.6f + Screen.width / 4 + i * 125, 0.75f * Screen.height / 6, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        for (int i = 0; i < 8; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(34.3f + Screen.width / 10 + i * 125, 2.25f * Screen.height / 6, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        for (int i = 0; i < 8; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(34.3f + Screen.width / 10 + i * 125, 3.75f * Screen.height / 6, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            clone = Instantiate(CardPrefab, new Vector3(43.6f + Screen.width / 4 + i * 125, 5.25f * Screen.height / 6, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+            clone.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            _gameManager.cards.Insert(index++, clone);
+        }
+
+        // _gameManager.initializeCards(cardCount);
     }
     void createMatchImageLevel(int cardCount)
     {
