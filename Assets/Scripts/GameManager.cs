@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static LevelCreator;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,20 +16,31 @@ public class GameManager : MonoBehaviour
     public int totalCardCount;
     // public Text matchText;
     public int[] orders;
-
+    public bool usePairsArr = false;
 
     [SerializeField]
     private int score = 0;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
-        }else if(instance != this)
+        }
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
+    }
+    public void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+            checkCards();
     }
     public Sprite getCardBack()
     {
@@ -42,17 +54,6 @@ public class GameManager : MonoBehaviour
     {
         return cardFacesPairs[i];
     }
-
-    public void Start()
-    {
-        DontDestroyOnLoad(this);
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonUp(0))
-            checkCards();
-    }
     void swap(int[] arr, int a, int b)
     {
         int temp = arr[a];
@@ -61,8 +62,8 @@ public class GameManager : MonoBehaviour
     }
     void shuffleArr(int[] arr)
     {
-        int i,j;
-        for(i = arr.Length - 1; i >= 0; i--)
+        int i, j;
+        for (i = arr.Length - 1; i >= 0; i--)
         {
             j = Random.Range(0, i);
             swap(arr, i, j);
@@ -73,24 +74,62 @@ public class GameManager : MonoBehaviour
         orders = new int[cardCount];
         for (int i = 0; i < cardCount; i++)
         {
-            orders[i] = i; // 0 1 2 3 4 5 6 7 ...
+            orders[i] = i; // 0 1 2 3 4 5 6 7 ... until cardCount
         }
         return arr;
     }
-    public void initializeCards(int cardCount)
+    public void initializeCards(LevelType type)
     {
-        totalCardCount = cardCount;
-        // create orders array for mixing cards
-        initializeOrderArray(orders, cardCount);
-        // Shuffle order array
+        totalCardCount = instance.cards.Count;
+        initializeOrderArray(orders, totalCardCount);
         shuffleArr(orders);
-        for(int i = 0; i < cardCount; i++)
+        initializeCardValues();
+        if (type.Equals(LevelType.MatchSame))
+        {
+            setupGraphics(cards);
+        }
+        else
+        {
+            setupGraphicsUsingDifferentPairs(cards);
+        }
+        
+
+    }
+    public void initializeCardValues()
+    {
+        for (int i = 0; i < totalCardCount; i++)
         {
             int choice = orders[i];
-            cards[choice].GetComponent<Card>().CardValue = i % (cardCount/2);
+            cards[choice].GetComponent<Card>().CardValue = i % (totalCardCount / 2);
             cards[choice].GetComponent<Card>().Initialized = true;
         }
-        setupGraphics(cards);
+    }
+
+    public void setupGraphicsUsingDifferentPairs(List<GameObject> cards)
+    {
+        for(int i = 0; i < cards.Count/2; i++)
+        {
+            for(int j = 0; j < cards.Count; j++)
+            {
+                if(cards[j].GetComponent<Card>().CardValue == i)
+                {
+                    cards[j].GetComponent<Card>().CardBack = cardBack;
+                    cards[j].GetComponent<Card>().CardFace = getCardFace(i);
+                }
+            }
+        }
+
+        for (int i = 0; i < cards.Count / 2; i++)
+        {
+            for (int j = cards.Count-1; j >= 0; j--)
+            {
+                if (cards[j].GetComponent<Card>().CardValue == i)
+                {
+                    cards[j].GetComponent<Card>().CardBack = cardBack;
+                    cards[j].GetComponent<Card>().CardFace = getCardFacePair(i);
+                }
+            }
+        }
     }
     public void setupGraphics(List<GameObject> cards)
     {
@@ -104,9 +143,9 @@ public class GameManager : MonoBehaviour
     {
         List<int> c = new List<int>();
         int index = 0;
-        for(int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
-            if(cards[i].GetComponent<Card>().State == 1)
+            if (cards[i].GetComponent<Card>().State == 1)
             {
                 Debug.Log("Inserted " + i + " at index " + index);
                 c.Insert(index++, i);
@@ -121,8 +160,8 @@ public class GameManager : MonoBehaviour
         Card.CAN_FLIP = false;
 
         int x = 0;
-        
-        if(cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
+
+        if (cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
             score += 100;
             DestroyCard(c[0]);
@@ -131,11 +170,11 @@ public class GameManager : MonoBehaviour
             {
                 score = 0;
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-            }  
+            }
         }
         else
         {
-            
+
             for (int i = 0; i < c.Count; i++)
             {
                 cards[c[i]].GetComponent<Card>().State = x;

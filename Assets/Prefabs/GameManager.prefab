@@ -48,9 +48,31 @@ MonoBehaviour:
   cardFaces:
   - {fileID: 21300000, guid: c6cc964b100db2643a27eb1ee728366c, type: 3}
   - {fileID: 21300000, guid: fc1c53c77a729c541bc5b104334cf1fe, type: 3}
+  - {fileID: 21300000, guid: 946abbd308474b047b208140ed165f76, type: 3}
+  - {fileID: 21300000, guid: b600690ecc7931941b94d89eb88551e8, type: 3}
+  - {fileID: 21300000, guid: 4b05fb90bbf315645b7f999fa43f57c5, type: 3}
   - {fileID: 21300000, guid: d390d6a211dc5364dad1902a4123cc01, type: 3}
+  - {fileID: 21300000, guid: 2981c7517290f94479e72c60507426f7, type: 3}
+  - {fileID: 21300000, guid: 00c890ffc3bc9d24cb833be5db8de4e6, type: 3}
+  - {fileID: 21300000, guid: c7807d7397521544181c5b304d6f185e, type: 3}
+  - {fileID: 21300000, guid: 20942bcb9bd90734faa015b168a5f11c, type: 3}
+  - {fileID: 21300000, guid: 27b825c4a573a52479136d12d7fb7bd1, type: 3}
+  - {fileID: 21300000, guid: fb2980e043de2c14bbe13ebfeb202a8c, type: 3}
   - {fileID: 21300000, guid: dd50d271a70508e499596e127e12ac43, type: 3}
-  cardFacesPairs: []
+  cardFacesPairs:
+  - {fileID: 21300000, guid: c6cc964b100db2643a27eb1ee728366c, type: 3}
+  - {fileID: 21300000, guid: fc1c53c77a729c541bc5b104334cf1fe, type: 3}
+  - {fileID: 21300000, guid: 946abbd308474b047b208140ed165f76, type: 3}
+  - {fileID: 21300000, guid: b600690ecc7931941b94d89eb88551e8, type: 3}
+  - {fileID: 21300000, guid: 4b05fb90bbf315645b7f999fa43f57c5, type: 3}
+  - {fileID: 21300000, guid: d390d6a211dc5364dad1902a4123cc01, type: 3}
+  - {fileID: 21300000, guid: 2981c7517290f94479e72c60507426f7, type: 3}
+  - {fileID: 21300000, guid: 00c890ffc3bc9d24cb833be5db8de4e6, type: 3}
+  - {fileID: 21300000, guid: c7807d7397521544181c5b304d6f185e, type: 3}
+  - {fileID: 21300000, guid: 20942bcb9bd90734faa015b168a5f11c, type: 3}
+  - {fileID: 21300000, guid: 27b825c4a573a52479136d12d7fb7bd1, type: 3}
+  - {fileID: 21300000, guid: fb2980e043de2c14bbe13ebfeb202a8c, type: 3}
+  - {fileID: 21300000, guid: dd50d271a70508e499596e127e12ac43, type: 3}
   cardBack: {fileID: 21300000, guid: ffb04faa2a5059a41ae001ca3f7ff435, type: 3}
   cards: []
   totalCardCount: 0
