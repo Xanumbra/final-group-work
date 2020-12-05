@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1135763883514319942}
   - component: {fileID: 1135763883514319943}
   - component: {fileID: 1135763883514319940}
+  - component: {fileID: -7046365956250627165}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -77,6 +78,7 @@ MonoBehaviour:
   cards: []
   totalCardCount: 0
   orders: 
+  usePairsArr: 0
   score: 0
 --- !u!114 &1135763883514319943
 MonoBehaviour:
@@ -104,3 +106,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e41b727ec997a84caeb721a91b415d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7046365956250627165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135763883514319928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30ed021fdc6b3643b20b99d51401e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}

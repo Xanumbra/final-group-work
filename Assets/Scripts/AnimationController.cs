@@ -7,6 +7,8 @@ public class AnimationController : MonoBehaviour
     // Singleton instance object
     public static AnimationController instance = null;
 
+    public Animator animator;
+
     private void Awake()
     {
         if (instance == null)
@@ -17,6 +19,11 @@ public class AnimationController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Start()
+    {
+        animator = GetComponent<Animator>();
     }
     public void TriggerAnimation()
     {

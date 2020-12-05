@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
             score += 100;
             DestroyCard(c[0]);
             DestroyCard(c[1] - 1);
+            AnimationController.instance.animator.SetTrigger("Correct");
             if (score == 100 * (totalCardCount / 2))
             {
                 score = 0;
