@@ -47,4 +47,8 @@ public class SceneController : MonoBehaviour
         // Debug.Log("Loading Main Menu");
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
+    public void exitApplication()
+    {
+        Application.Quit();
+    }
 }
