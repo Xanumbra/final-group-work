@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         {
             setupGraphicsUsingDifferentPairs(cards);
         }
-        
+
 
     }
     public void initializeCardValues()
@@ -107,11 +107,11 @@ public class GameManager : MonoBehaviour
 
     public void setupGraphicsUsingDifferentPairs(List<GameObject> cards)
     {
-        for(int i = 0; i < cards.Count/2; i++)
+        for (int i = 0; i < cards.Count / 2; i++)
         {
-            for(int j = 0; j < cards.Count; j++)
+            for (int j = 0; j < cards.Count; j++)
             {
-                if(cards[j].GetComponent<Card>().CardValue == i)
+                if (cards[j].GetComponent<Card>().CardValue == i)
                 {
                     cards[j].GetComponent<Card>().CardBack = cardBack;
                     cards[j].GetComponent<Card>().CardFace = getCardFace(i);
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < cards.Count / 2; i++)
         {
-            for (int j = cards.Count-1; j >= 0; j--)
+            for (int j = cards.Count - 1; j >= 0; j--)
             {
                 if (cards[j].GetComponent<Card>().CardValue == i)
                 {
@@ -169,7 +169,15 @@ public class GameManager : MonoBehaviour
             if (score == 100 * (totalCardCount / 2))
             {
                 score = 0;
-                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                if (SceneManager.GetActiveScene().name.Equals("Level_9"))
+                {
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+                }
+
             }
         }
         else
