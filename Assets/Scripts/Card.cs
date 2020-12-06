@@ -20,20 +20,24 @@ public class Card : MonoBehaviour
     }
     public void flipCard()
     {
-        if (State == 1 && CAN_FLIP)
-            State = 0;
-        else if (State == 0 && CAN_FLIP)
-            State = 1;
+        if(Time.timeScale != 0)
+        {
+            if (State == 1 && CAN_FLIP)
+                State = 0;
+            else if (State == 0 && CAN_FLIP)
+                State = 1;
 
-        if (State == 0 && CAN_FLIP)
-        {
-            GetComponent<Image>().sprite = CardBack;
+            if (State == 0 && CAN_FLIP)
+            {
+                GetComponent<Image>().sprite = CardBack;
+            }
+            else if (State == 1 && CAN_FLIP)
+            {
+                GetComponent<Image>().sprite = CardFace;
+                AudioController.instance.playOnFlipCardSound();
+            }
         }
-        else if (State == 1 && CAN_FLIP)
-        {
-            GetComponent<Image>().sprite = CardFace;
-            AudioController.instance.playOnFlipCardSound();
-        }
+        
     }
 
     public void falseCheck()

@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardPrefab: {fileID: 2252552278557206188, guid: 0284bbf1a99c25b42aba5e610ae51bf6,
     type: 3}
+  TimerPrefab: {fileID: 7765047454374728125, guid: b7845f485612c824ca8e0a3a96d9800b,
+    type: 3}
 --- !u!114 &1135763883514319940
 MonoBehaviour:
   m_ObjectHideFlags: 0

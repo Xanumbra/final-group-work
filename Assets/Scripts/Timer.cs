@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
-
+    public GameObject GameOverTextPrefab;
     public Text timeText;
 
     private void Start()
@@ -31,6 +31,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                GameOver();
             }
         }
         
@@ -44,5 +45,18 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void GameOver()
+    {
+        Instantiate(GameOverTextPrefab, new Vector3(Screen.width / 2, Screen.height / 2,0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>());
+        Time.timeScale = 0f;
+        StartCoroutine(Wait());
+    }
+    IEnumerator Wait()
+    {
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(3);
+        SceneController.instance.loadMainMenu();
     }
 }
