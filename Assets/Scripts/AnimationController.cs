@@ -21,16 +21,15 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public void Start()
+    void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
     }
-    public void TriggerAnimation()
+    void Update()
     {
-
-    }
-    public void TriggerAnotherAnimation()
-    {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("Win");
+        }
     }
 }
