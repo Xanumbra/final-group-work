@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
         {
             if (cards[i].GetComponent<Card>().State == 1)
             {
-                Debug.Log("Inserted " + i + " at index " + index);
+                // Debug.Log("Inserted " + i + " at index " + index);
                 c.Insert(index++, i);
             }
         }
@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
 
         if (cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
+            AudioController.instance.playMatchCardSound();
             score += 100;
             DestroyCard(c[0]);
             DestroyCard(c[1] - 1);
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
+            AudioController.instance.playMismatchCardSound();
             for (int i = 0; i < c.Count; i++)
             {
                 cards[c[i]].GetComponent<Card>().State = x;

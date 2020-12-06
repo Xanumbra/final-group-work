@@ -6,9 +6,8 @@ public class AudioController : MonoBehaviour
 {
     public static AudioController instance = null;
 
-    public AudioSource audioSource;
+    public AudioSource audio;
 
-    public float volume = 0.5f;
     public List<AudioClip> clipArray = new List<AudioClip>();
 
     private void Awake()
@@ -22,28 +21,19 @@ public class AudioController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    public void playFlipCardSound()
-    {
-        audioSource.PlayOneShot(clipArray[0], volume);
-    }
     public void playMatchCardSound()
     {
-        audioSource.PlayOneShot(clipArray[1], volume);
+        audio.PlayOneShot(clipArray[0], 0.2f);
     }
 
     public void playMismatchCardSound()
     {
-        audioSource.PlayOneShot(clipArray[2], volume);
+        audio.PlayOneShot(clipArray[1], 0.2f);
     }
 
     public void playOnButtonPressSound()
     {
-        audioSource.PlayOneShot(clipArray[3], volume);
+        audio.PlayOneShot(clipArray[2]);
     }
 
 
