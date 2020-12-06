@@ -34,7 +34,7 @@ public class LevelCreator : MonoBehaviour
             if (levelNumber == 1)
             {
                 createEasyMatchLevel(LevelType.MatchSame);
-                initializeTimer(5);
+                initializeTimer(50);
             }
             else if (levelNumber == 2)
             {
