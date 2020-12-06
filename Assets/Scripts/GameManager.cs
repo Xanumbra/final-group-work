@@ -40,7 +40,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
+        {
             checkCards();
+        }
+            
     }
     public Sprite getCardBack()
     {

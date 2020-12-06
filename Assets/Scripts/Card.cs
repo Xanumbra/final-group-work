@@ -32,6 +32,7 @@ public class Card : MonoBehaviour
         else if (State == 1 && CAN_FLIP)
         {
             GetComponent<Image>().sprite = CardFace;
+            AudioController.instance.playOnFlipCardSound();
         }
     }
 

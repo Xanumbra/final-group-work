@@ -36,6 +36,8 @@ public class AudioController : MonoBehaviour
         audio.PlayOneShot(clipArray[2]);
     }
 
-
-
+    public void playOnFlipCardSound()
+    {
+        audio.PlayOneShot(clipArray[3]);
+    }
 }
