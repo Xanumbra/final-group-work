@@ -50,4 +50,5 @@ Here is the list of team members that worked on the project
 * Kristi Märgi
 
 Note: Details about created classes and workload are going to be explained in the presentation.
-
+# Known Bugs
+1. Sometimes, the button sound is not played properly.
