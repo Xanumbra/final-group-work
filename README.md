@@ -1,4 +1,4 @@
-# final-group-work
+# Mystery of the Letter - Basic Game Development Final Group Work
 This is the final project for the Basics of Game Development course in Tallinn University.
 
 # Importing the Project
