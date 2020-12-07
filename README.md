@@ -41,3 +41,13 @@ The game is called Mystery of letters and it is a memory game. The player has to
     1. Easy = 8 cards(4 pairs)
     2. Normal = 16 cards(8 pairs)
     3. Hard = 26 cards(13 pairs)
+# The Team
+Here is the list of team members that worked on the project
+* Ertuğ Obalar
+* Mari-Anna Lepasson
+* Kaja Toomla
+* Victoria Parmas
+* Kristi Märgi
+
+Note: Details about created classes and workload are going to be explained in the presentation.
+
