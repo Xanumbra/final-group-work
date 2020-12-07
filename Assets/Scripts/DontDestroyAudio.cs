@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class DontDestroyAudio : MonoBehaviour
 {
+
+    public static DontDestroyAudio instance = null;
+
     // Background audio continues to play after changing the scene
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+       
+    }
+    public void Start()
+    {
+        DontDestroyOnLoad(this);
     }
 }

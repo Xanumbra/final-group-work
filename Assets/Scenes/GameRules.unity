@@ -671,7 +671,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 752552848, guid: 6604b6d68d7a65743ba426233072290a, type: 3}
         m_MethodName: playOnButtonPressSound
         m_Mode: 1
         m_Arguments:
@@ -2604,7 +2604,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 752552848, guid: 6604b6d68d7a65743ba426233072290a, type: 3}
         m_MethodName: playOnButtonPressSound
         m_Mode: 1
         m_Arguments:
@@ -2747,8 +2747,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: loadMainMenu
+      - m_Target: {fileID: 752552848, guid: 6604b6d68d7a65743ba426233072290a, type: 3}
+        m_MethodName: playOnButtonPressSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2758,8 +2758,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: playOnButtonPressSound
+      - m_Target: {fileID: 1135763883514319940, guid: 6604b6d68d7a65743ba426233072290a,
+          type: 3}
+        m_MethodName: loadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
