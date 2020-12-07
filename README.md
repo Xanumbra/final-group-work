@@ -36,7 +36,7 @@ The game is called Mystery of letters and it is a memory game. The player has to
 2. Match the animal cards with the animal cards that has names
     1. Easy = 8 cards(4 pairs)
     2. Normal = 16 cards(8 pairs)
-    3. Hard = 26 cards
+    3. Hard = 26 cards(13 pairs)
 3. Match the animal cards with names to the letters
     1. Easy = 8 cards(4 pairs)
     2. Normal = 16 cards(8 pairs)
