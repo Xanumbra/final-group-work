@@ -7,6 +7,6 @@ public class LoadRules : MonoBehaviour
 {
     public void loadRules()
     {
-        SceneManager.LoadScene("Rules");
+        SceneManager.LoadScene("GameRules");
     }
 }
