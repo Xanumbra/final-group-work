@@ -205,14 +205,8 @@ public class GameManager : MonoBehaviour
             if (score == 100 * (totalCardCount / 2))
             {
                 score = 0;
-                if (SceneManager.GetActiveScene().name.Equals("Level_9"))
-                {
-                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
-                }
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+
 
             }
         }
