@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/*
+ * SceneController 
+ * Singleton Class responsible for changing the scene from one to another 
+ */
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance = null;

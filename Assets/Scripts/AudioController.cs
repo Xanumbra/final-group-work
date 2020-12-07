@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/* Animation Controller
+ * Singleton Class responsible for triggering sounds.
+ * The class itself is used in a variety of places and every sound is included in clipArray List.
+ */
 public class AudioController : MonoBehaviour
 {
     public static AudioController instance = null;

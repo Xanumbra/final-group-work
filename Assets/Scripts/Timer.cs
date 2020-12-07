@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+ * Timer.cs
+ * Timer is used to end the game if the task is not completed in time.
+ * Ending the game is basically going back to the Main Menu Scene
+ */
 public class Timer : MonoBehaviour
 {
 
