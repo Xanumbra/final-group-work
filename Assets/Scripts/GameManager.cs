@@ -4,7 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static LevelCreator;
-
+/* Game Manager
+ * Singleton Class responsible for managing systems in order to create levels and trigger actions.
+ * It has some attributes to help it with game management
+ *  CardFaces and CardFacesPairs are used as containers for images to be used.
+ *  CardBack is a container for Card Back Image.
+ *  cards are used as a GameObject contrainer to interact with cards spawned on the Scene
+ *  totalCardCount to store amount of cards spawned in a scene
+ *  orders to create a random order for cards so they are random when the player plays the game
+ *  usePairsArr to determine if the cardFacesPairs will be used
+ *  score to determine the ending condition
+ */
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -14,7 +24,6 @@ public class GameManager : MonoBehaviour
     public Sprite cardBack;
     public List<GameObject> cards;
     public int totalCardCount;
-    // public Text matchText;
     public int[] orders;
     public bool usePairsArr = false;
 
@@ -107,7 +116,11 @@ public class GameManager : MonoBehaviour
             cards[choice].GetComponent<Card>().Initialized = true;
         }
     }
-
+    /*
+     * This method find the pairs by checking the Array from the beginning first
+     * and then from the end of the array.
+     * This algorithm helps us to find the pairs accurately and determine their faces.
+     */
     public void setupGraphicsUsingDifferentPairs(List<GameObject> cards)
     {
         for (int i = 0; i < cards.Count / 2; i++)
@@ -158,6 +171,11 @@ public class GameManager : MonoBehaviour
         if (c.Count == 2)
             cardComparison(c);
     }
+    /*
+     * This method is the main method that makes it possible to compare cards
+     * If cards are the same, they are destroyed and score is increased.
+     * If the cards are not the same, they are flipped
+     */
     void cardComparison(List<int> c)
     {
         Card.CAN_FLIP = false;

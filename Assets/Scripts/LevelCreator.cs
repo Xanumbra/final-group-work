@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+/*
+ * Level Creator
+ * Singleton Class that is responsible for creating the game levels.
+ * It created cards and the Timer so the gameplay is possible.
+ */
 public class LevelCreator : MonoBehaviour
 {
     public static LevelCreator instance = null;

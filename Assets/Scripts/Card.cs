@@ -3,7 +3,15 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+/* Card.cs
+ * Class to define basic gameobject used in game levels.
+ * It has specific attributes that makes it functional:
+ *  CardValue to define which card face it will have
+ *  State to define if the card is facing up or down
+ *  Initialized to check if it is created or not
+ *  CardFace to hold the Sprite for its front
+ *  CardBack to hold the Sprite for its back
+ */
 public class Card : MonoBehaviour
 {
     public static bool CAN_FLIP = true;
@@ -18,6 +26,8 @@ public class Card : MonoBehaviour
         State = 0;
         CAN_FLIP = true;
     }
+    /* This method is the main method on the object that is triggered with OnClick() event.
+     */
     public void flipCard()
     {
         if(Time.timeScale != 0)
