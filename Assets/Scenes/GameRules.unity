@@ -1015,14 +1015,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Mystery of Letters hides three games:\n\nCard matching memorine.\_\nThe
-    goal is to find two same looking cards.\_\_\n\nMatching animal cards with letters.\nThe
-    goal is to match an animal card and a letter card that presents an initial letter
-    of an animal.\n\nMatching animal cards with anima words.\nThe goal is to match
-    an animal card with a word card that presents an animal in a\_picture.\_\n\nHow
-    to play:\nAt once you are able to pick two cards. If the cards match they will
-    disappear. If the cards don't match they get turned back again.\_\_\n\nEach game
-    hides three difficulty levels:\nBeginner - 8 cards\nIntermediate - 16 cards\nAdvanced
-    - 26 cards\n\nEach level has a time limit for passing the level."
+    goal is to find two same looking cards.\_\_\n\nMatching animal cards with animal
+    name cards.\nThe goal is to match an animal card and another animal card with
+    animal name on it. \n\nMatching animal cards with beginning letter of an animal.\nThe
+    goal is to match an animal card with a letter card that presents an animal in
+    a\_picture.\_\n\nHow to play:\nAt once you are able to pick two cards. If the
+    cards match they will disappear. If the cards don't match they get turned back
+    again.\_\_\n\nEach game hides three difficulty levels:\nBeginner - 8 cards\nIntermediate
+    - 16 cards\nAdvanced - 26 cards\n\nEach level has a time limit for passing the
+    level:\nBeginner - 1 minute\nIntermediate - 2 minutes\nAdvanced - 4 minutes"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1067,7 +1068,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 721
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1091,12 +1092,12 @@ MonoBehaviour:
   m_margin: {x: 4.504157, y: 53.97181, z: 15.451248, w: 8.122115}
   m_textInfo:
     textComponent: {fileID: 691535613}
-    characterCount: 685
+    characterCount: 766
     spriteCount: 0
-    spaceCount: 136
-    wordCount: 125
+    spaceCount: 151
+    wordCount: 139
     linkCount: 0
-    lineCount: 23
+    lineCount: 26
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2092,8 +2093,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1425399963}
   m_HandleRect: {fileID: 1425399962}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.53741425
+  m_Value: 1
+  m_Size: 0.5374142
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2592,9 +2593,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1135763883514319940, guid: 6604b6d68d7a65743ba426233072290a,
-          type: 3}
-        m_MethodName: loadLevel_1
+      - m_Target: {fileID: 752552848, guid: 6604b6d68d7a65743ba426233072290a, type: 3}
+        m_MethodName: playOnButtonPressSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2604,8 +2604,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 752552848, guid: 6604b6d68d7a65743ba426233072290a, type: 3}
-        m_MethodName: playOnButtonPressSound
+      - m_Target: {fileID: 1135763883514319940, guid: 6604b6d68d7a65743ba426233072290a,
+          type: 3}
+        m_MethodName: loadLevel_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
