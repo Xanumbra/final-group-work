@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] cardFaces;
     public Sprite[] cardFacesPairs;
+    public Sprite[] animals;
+    public Sprite[] animalsWithNames;
+    public Sprite[] letters;
     public Sprite cardBack;
     public List<GameObject> cards;
     public int totalCardCount;
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             checkCards();
         }
-            
+
     }
     public Sprite getCardBack()
     {
@@ -98,10 +101,20 @@ public class GameManager : MonoBehaviour
         initializeCardValues();
         if (type.Equals(LevelType.MatchSame))
         {
+            cardFaces = animalsWithNames;
             setupGraphics(cards);
+
         }
-        else
+        else if (type.Equals(LevelType.MatchImageWithWord))
         {
+            cardFaces = animals;
+            cardFacesPairs = animalsWithNames;
+            setupGraphicsUsingDifferentPairs(cards);
+        }
+        else if (type.Equals(LevelType.MatchImageWithLetter))
+        {
+            cardFaces = animalsWithNames;
+            cardFacesPairs = letters;
             setupGraphicsUsingDifferentPairs(cards);
         }
 
