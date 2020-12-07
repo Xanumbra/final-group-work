@@ -212,7 +212,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AudioController.instance.playMismatchCardSound();
             for (int i = 0; i < c.Count; i++)
             {
                 cards[c[i]].GetComponent<Card>().State = x;

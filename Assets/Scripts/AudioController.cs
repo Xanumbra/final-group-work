@@ -30,18 +30,13 @@ public class AudioController : MonoBehaviour
         audio.PlayOneShot(clipArray[0], 0.2f);
     }
 
-    public void playMismatchCardSound()
-    {
-        audio.PlayOneShot(clipArray[1], 0.2f);
-    }
-
     public void playOnButtonPressSound()
     {
-        audio.PlayOneShot(clipArray[2]);
+        audio.PlayOneShot(clipArray[1]);
     }
 
     public void playOnFlipCardSound()
     {
-        audio.PlayOneShot(clipArray[3]);
+        audio.PlayOneShot(clipArray[2]);
     }
 }
